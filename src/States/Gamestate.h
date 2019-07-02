@@ -27,9 +27,9 @@ protected:
 private:
 	bool isColliding(sf::Vector2f playerPos);
 
-
 	bool isPaused;
 	bool TryPause;
+	
 };
 
 #endif // GAMESTATE_H

@@ -1,10 +1,13 @@
 #include "Context.h"
 #include <iostream>
+#include "glad/glad/glad.h"
 
 Context::Context()
 {
     sf::ContextSettings settings;
-    context.create(sf::VideoMode(800, 600), "Zymon : Testing Edition", sf::Style::Default, settings);
+	settings.majorVersion = 3;
+	settings.minorVersion = 3;
+    context.create(sf::VideoMode(800, 600), "TechnoMagica", sf::Style::Default, settings);
     context.setFramerateLimit(60);
     initAPI();
 }
@@ -21,7 +24,9 @@ sf::RenderWindow* Context::getContext()
 
 void Context::clear()
 {
-    context.clear(sf::Color::Black);
+    //context.clear(sf::Color::Black);
+	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
 }
 
 void Context::update()
@@ -41,7 +46,8 @@ void Context::close()
 
 void Context::initAPI()
 {
-
+	gladLoadGL();
+	glViewport(0, 0, 800, 600);
 }
 
 bool Context::isOpen()

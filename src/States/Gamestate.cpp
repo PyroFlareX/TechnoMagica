@@ -65,6 +65,7 @@ void GameState::update(sf::RenderWindow* window, float dt)
 		isPaused = true;
 		TryPause = false;
 	}
+
 	if (!isPaused)
 	{
 		
