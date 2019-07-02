@@ -17,35 +17,12 @@ void Application::RunLoop()
 	std::string fragSource = getFileContents("res/Shaders/frag.glsl");
 	const char* fragPtr = fragSource.c_str();
 
-
-	sf::Clock timer;
-	sf::Time dt;
-	float t = 0;
-	int frames = 0;
-	m_context.clear();
-	m_context.update();
-    sf::RenderWindow* p_window = m_context.getContext();
-	Camera cam(p_window);
-
-
-	//GL Stuff
-	float vertices[] = {
-	-0.5f, -0.5f, 0.0f,
-	 0.5f, -0.5f, 0.0f,
-	 0.0f,  0.5f, 0.0f
-	};
-	//Generate and Bind VBO
-	unsigned int VBO;
-	glGenBuffers(1, &VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
 	//Vertex Shader
 	unsigned int vertexShader;
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertexShader, 1, &vertPtr, NULL);
 	glCompileShader(vertexShader);
-	
+
 	//Check Success of Vert Shader
 	int  success;
 	char infoLog[512];
@@ -84,24 +61,52 @@ void Application::RunLoop()
 		std::cout << "ERROR! Program Stuff failed!\n" << infoLog << "\n";
 	}
 
-	//Other stuff
-	glUseProgram(shaderProgram);
+	//Delete Shaders
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
+//===================================================================================
 
-	//Vertex Attributes
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
+	sf::Clock timer;
+	sf::Time dt;
+	float t = 0;
+	int frames = 0;
+	m_context.clear();
+	m_context.update();
+    sf::RenderWindow* p_window = m_context.getContext();
+	Camera cam(p_window);
+//===================================================================================
 
-	//Make a VAO
-	unsigned int VAO;
-	glGenVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
+	//GL Stuff
+	float vertices[] = {
+	 0.5f,  0.5f, 0.0f,  // top right
+	 0.5f, -0.5f, 0.0f,  // bottom right
+	-0.5f, -0.5f, 0.0f,  // bottom left
+	-0.5f,  0.5f, 0.0f   // top left 
+	};
+	unsigned int indices[] = {  // note that we start from 0!
+		0, 1, 3,   // first triangle
+		1, 2, 3    // second triangle
+	};
+//==============================================================================
+	unsigned int VBO, VAO, EBO;
+	glGenVertexArrays(1, &VAO); //VAO
+	glGenBuffers(1, &VBO);		//Gen VBO
+	glGenBuffers(1, &EBO);		//Gen EBO
+	glBindVertexArray(VAO);		//Bind VAO
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);	//Store Verticies
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);	//Store Indicies
+
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+	
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+
+//===================================================================================
 
 	//Main Loop
     while(m_context.isOpen() && !m_states.empty())
@@ -122,9 +127,17 @@ void Application::RunLoop()
 		m_context.clear();
 		m_renderer.render(p_window);
 
+
+		float timeValue = frames / 10.0f;
+		float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
+		int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
+		glUseProgram(shaderProgram);
+		glUniform4f(vertexColorLocation, greenValue, 0.0f, 0.0f, 1.0f);
+
+
 		glUseProgram(shaderProgram);
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         m_context.update();
 
