@@ -2,13 +2,16 @@
 #include <iostream>
 #include "glad/glad/glad.h"
 
+constexpr int HEIGHT = 600;
+constexpr int WIDTH = 800;
+
 Context::Context()
 {
     sf::ContextSettings settings;
 	settings.majorVersion = 3;
 	settings.minorVersion = 3;
-    context.create(sf::VideoMode(800, 600), "TechnoMagica", sf::Style::Default, settings);
-    context.setFramerateLimit(60);
+    context.create(sf::VideoMode(WIDTH, HEIGHT), "TechnoMagica", sf::Style::Default, settings);
+    //context.setFramerateLimit(60);
     initAPI();
 }
 
@@ -47,7 +50,7 @@ void Context::close()
 void Context::initAPI()
 {
 	gladLoadGL();
-	glViewport(0, 0, 800, 600);
+	glViewport(0, 0, WIDTH, HEIGHT);
 }
 
 bool Context::isOpen()

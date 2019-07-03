@@ -151,6 +151,7 @@
     <ClInclude Include="src\nlohmann\json.hpp" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\renderers\Renderer.h" />
+    <ClInclude Include="src\Shaders\Shader.h" />
     <ClInclude Include="src\states\Basestate.h" />
     <ClInclude Include="src\states\Gamestate.h" />
     <ClInclude Include="src\util\FileUtil.h" />
