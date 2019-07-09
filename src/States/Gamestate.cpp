@@ -15,40 +15,44 @@ GameState::~GameState()
 
 bool GameState::input(Application &app)
 {
-	Input::Inputs input;
 	if (!isPaused)
 	{
-		input = Input::getInput();
+		vInput = Input::getInput();
 
-		if (input.right)
+		if (vInput.right)
 		{
 			std::cout << "Going Right!\n";
+			momentum.x++;
 		}
 		else
-			if (input.left)
+			if (vInput.left)
 			{
 				std::cout << "Going Left!\n";
+				momentum.x--;
 			}
 			else
-				if (input.up)
+				if (vInput.up)
 				{
 					std::cout << "Going Up!\n";
-					
+					momentum.y++;
 				}
 				else
-					if (input.down)
+					if (vInput.down)
 					{
 						std::cout << "Going Down!\n";
+						momentum.y--;
 					}
 					else
-						if (input.forth)
+						if (vInput.forth)
 						{
 							std::cout << "Going Forward!\n";
+							momentum.z--;
 						}
 						else
-							if (input.backwards)
+							if (vInput.backwards)
 							{
 								std::cout << "Going Back!\n";
+								momentum.z++;
 							}
 	}
 	return false;
@@ -68,7 +72,7 @@ void GameState::update(sf::RenderWindow* window, float dt)
 
 	if (!isPaused)
 	{
-		
+		momentum *= dt;
 		/// Collision Detection Here
 
 	}
@@ -76,7 +80,7 @@ void GameState::update(sf::RenderWindow* window, float dt)
 
 void GameState::lateUpdate(Camera* cam)
 {
-	
+	cam->move(momentum);
 }
 
 void GameState::render(Renderer* renderer)

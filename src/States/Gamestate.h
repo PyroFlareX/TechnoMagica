@@ -30,6 +30,8 @@ private:
 	bool isPaused;
 	bool TryPause;
 	
+	Input::Inputs vInput;
+	glm::vec3 momentum = glm::vec3(0.0f);
 };
 
 #endif // GAMESTATE_H

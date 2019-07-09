@@ -3,6 +3,9 @@
 
 #include <SFML/Graphics.hpp>
 
+constexpr int HEIGHT = 600;
+constexpr int WIDTH = 800;
+
 class Context
 {
     public:
