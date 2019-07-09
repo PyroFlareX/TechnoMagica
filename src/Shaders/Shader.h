@@ -82,7 +82,9 @@ public:
 		glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 	}
 
-private:
 	//Shader Program:
 	unsigned int ID;
+
+private:
+	
 };
