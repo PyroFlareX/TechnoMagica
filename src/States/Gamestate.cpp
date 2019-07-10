@@ -77,7 +77,7 @@ void GameState::update(sf::RenderWindow* window, float dt)
 void GameState::lateUpdate(Camera* cam)
 {
 	cam->move(momentum);
-	cam->rotate(rotation);
+	cam->rotate(rotation);	
 }
 
 void GameState::render(Renderer* renderer)

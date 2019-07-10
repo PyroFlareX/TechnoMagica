@@ -20,18 +20,18 @@ void Camera::move(glm::vec3& movement)
 
 void Camera::rotate(glm::vec3& rotationOffset)
 {
-	rotationOffset * lerp;
-	yaw += rotationOffset.x;
-	pitch += rotationOffset.y;
+	rotationOffset * 1.55f;
+	rot.x += rotationOffset.x;
+	rot.y += rotationOffset.y;
 
 	//Rotation Clamping
-	if (pitch > 89.0f) { pitch = 89.0f; }
-	if (pitch < -89.0f) { pitch = -89.0f; }
+	if (rot.y > 89.0f) { rot.y = 89.0f; }
+	if (rot.y < -89.0f) { rot.y = -89.0f; }
 
 	glm::vec3 front;
-	front.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
-	front.y = sin(glm::radians(pitch));
-	front.z = cos(glm::radians(pitch)) * sin(glm::radians(yaw));
+	front.x = cos(glm::radians(rot.y)) * cos(glm::radians(rot.x));
+	front.y = sin(glm::radians(rot.y));
+	front.z = cos(glm::radians(rot.y)) * sin(glm::radians(rot.x));
 
 	rotationOffset = glm::vec3(0.0f);
 

@@ -9,6 +9,9 @@ public:
 	Player();
 
 
+
+	void jump();
+
 	~Player();
 private:
 

@@ -1,14 +1,11 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <iostream>
 
 #include "Util/Input.h"
+#include "Entity.h"
 
-class Camera
+class Camera : public Entity
 {
 public:
 	Camera(sf::RenderWindow* p_win);
@@ -24,7 +21,5 @@ public:
 private:
 	sf::RenderWindow* p_window;
 	float lerp;
-	float yaw = 0.0f;
-	float pitch = 0.0f;
 };
 
