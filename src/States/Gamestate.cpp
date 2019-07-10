@@ -21,39 +21,28 @@ bool GameState::input(Application &app)
 
 		if (vInput.right)
 		{
-			std::cout << "Going Right!\n";
 			momentum.x++;
 		}
-		else
-			if (vInput.left)
-			{
-				std::cout << "Going Left!\n";
-				momentum.x--;
-			}
-			else
-				if (vInput.up)
-				{
-					std::cout << "Going Up!\n";
-					momentum.y++;
-				}
-				else
-					if (vInput.down)
-					{
-						std::cout << "Going Down!\n";
-						momentum.y--;
-					}
-					else
-						if (vInput.forth)
-						{
-							std::cout << "Going Forward!\n";
-							momentum.z--;
-						}
-						else
-							if (vInput.backwards)
-							{
-								std::cout << "Going Back!\n";
-								momentum.z++;
-							}
+		if (vInput.left)
+		{
+			momentum.x--;
+		}
+		if (vInput.up)
+		{
+			momentum.y++;
+		}
+		if (vInput.down)
+		{
+			momentum.y--;
+		}
+		if (vInput.forth)
+		{
+			momentum.z--;
+		}
+		if (vInput.backwards)
+		{
+			momentum.z++;
+		}
 	}
 	return false;
 }
@@ -72,15 +61,23 @@ void GameState::update(sf::RenderWindow* window, float dt)
 
 	if (!isPaused)
 	{
+		static auto oldMousePos = sf::Mouse::getPosition(*window);
+		sf::Vector2i offset = sf::Mouse::getPosition(*window) - sf::Vector2i(window->getSize().x / 2, window->getSize().y / 2);//oldMousePos;
+		rotation.y -= offset.y;
+		rotation.x += offset.x;
+		//std::cout << rotation.x << " " << rotation.y << "\n";
 		momentum *= dt;
+		rotation *= dt;
 		/// Collision Detection Here
-
+		//std::cout << rotation.x << " " << rotation.y << "\n";
 	}
+	sf::Mouse::setPosition(sf::Vector2i(window->getSize().x / 2, window->getSize().y / 2), *window);
 }
 
 void GameState::lateUpdate(Camera* cam)
 {
 	cam->move(momentum);
+	cam->rotate(rotation);
 }
 
 void GameState::render(Renderer* renderer)

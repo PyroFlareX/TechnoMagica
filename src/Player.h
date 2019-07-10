@@ -1,15 +1,13 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Entity.h"
 
-class Player
+class Player : public Entity
 {
 public:
 	Player();
 
-	sf::Sprite Character;
-
-	sf::FloatRect getBounds();
 
 	~Player();
 private:

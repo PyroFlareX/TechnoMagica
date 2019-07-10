@@ -22,8 +22,7 @@ void Application::RunLoop()
 //===================================================================================
 
 	//Projection Matrix
-	glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
-	
+	glm::mat4 proj = glm::perspective(glm::radians(60.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
 
 	//View Matrix
 	glm::mat4 view = glm::mat4(1.0f);

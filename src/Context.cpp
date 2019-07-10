@@ -9,7 +9,9 @@ Context::Context()
 	settings.minorVersion = 3;
 	settings.depthBits = 8;
     context.create(sf::VideoMode(WIDTH, HEIGHT), "TechnoMagica", sf::Style::Default, settings);
-    //context.setFramerateLimit(60);
+    context.setFramerateLimit(60);
+	context.setMouseCursorGrabbed(true);
+	context.setMouseCursorVisible(false);
     initAPI();
 }
 

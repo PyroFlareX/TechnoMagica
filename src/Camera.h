@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <iostream>
 
 #include "Util/Input.h"
 
@@ -17,10 +18,13 @@ public:
 	glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 
 	void move(glm::vec3& movement);
+	void rotate(glm::vec3& rotationOffset);
 
 	~Camera();
 private:
 	sf::RenderWindow* p_window;
 	float lerp;
+	float yaw = 0.0f;
+	float pitch = 0.0f;
 };
 

@@ -32,6 +32,7 @@ private:
 	
 	Input::Inputs vInput;
 	glm::vec3 momentum = glm::vec3(0.0f);
+	glm::vec3 rotation = glm::vec3(0.0f);
 };
 
 #endif // GAMESTATE_H

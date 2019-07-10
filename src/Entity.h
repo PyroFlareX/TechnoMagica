@@ -1,8 +1,13 @@
 #pragma once
-class Entity
+
+struct Entity
 {
 public:
-	Entity();
-	~Entity();
+	Entity() {};
+
+
+	//Add AABB box
+
+	~Entity() {};
 };
 
