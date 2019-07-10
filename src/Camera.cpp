@@ -9,8 +9,10 @@ Camera::Camera(sf::RenderWindow* p_win)
 
 void Camera::move(glm::vec3& movement)
 {
+	float y = cameraPos.y;
 	cameraPos -= movement.z * lerp * cameraFront;
 	cameraPos += movement.x * lerp * glm::normalize(glm::cross(cameraFront, cameraUp));
+	cameraPos.y = y;
 	cameraPos += movement.y * lerp * cameraUp;
 
 	movement = glm::vec3(0.0f);
