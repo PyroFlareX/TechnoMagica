@@ -4,22 +4,26 @@
 
 #include "Util/Input.h"
 #include "Entity.h"
+#include "Util/math.h"
 
 class Camera : public Entity
 {
 public:
 	Camera(sf::RenderWindow* p_win);
 
-	glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-	glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
-	glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+	glm::mat4 getViewMatrix(const Camera cam) const { return makeViewMatrix(*this); }
+	glm::mat4 getProjMatrix() const { return proj; }
 
-	void move(glm::vec3& movement);
-	void rotate(glm::vec3& rotationOffset);
+	void follow(Entity& entity);
+	void update();
 
 	~Camera();
 private:
 	sf::RenderWindow* p_window;
 	float lerp;
+
+	glm::mat4 proj;
+
+	Entity* p_entity;
 };
 

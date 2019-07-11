@@ -22,10 +22,10 @@ void Application::RunLoop()
 //===================================================================================
 
 	//Projection Matrix
-	glm::mat4 proj = glm::perspective(glm::radians(60.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
-
+	//glm::mat4 proj = glm::perspective(glm::radians(60.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
+	//proj = makeProjectionMatrix(60.0f, (sf::Vector2i)(p_window->getSize()));
 	//View Matrix
-	glm::mat4 view = glm::mat4(1.0f);
+	//glm::mat4 view = glm::mat4(1.0f);
 
 	glm::vec3 cubePositions[] = {
 	glm::vec3(0.0f,  0.0f,  0.0f),
@@ -42,61 +42,7 @@ void Application::RunLoop()
 
 
 	//GL Stuff
-	/*float vertices[] = {
-		// positions          // colors           // texture coords
-		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
-		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // bottom right
-		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // bottom left
-		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // top left 
-	};
-	unsigned int indices[] = {
-		0, 1, 3, // first triangle
-		1, 2, 3  // second triangle
-	};*/
-	float vertices[] = {
-	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-
-	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
-	};
-
+/*
 	sf::Image img;
 	img.loadFromFile("res/container.jpg");
 	sf::Texture tex;
@@ -117,7 +63,7 @@ void Application::RunLoop()
 	Shader shader("res/Shaders/vert.glsl", "res/Shaders/frag.glsl");
 
 //==============================================================================
-	unsigned int VBO, VAO, EBO;
+/*	unsigned int VBO, VAO, EBO;
 	glGenVertexArrays(1, &VAO); //VAO
 	glGenBuffers(1, &VBO);		//Gen VBO
 	//glGenBuffers(1, &EBO);		//Gen EBO
@@ -139,7 +85,7 @@ void Application::RunLoop()
 	//glEnableVertexAttribArray(2);
 	
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
+	glBindVertexArray(0);*/
 
 //===================================================================================
 
@@ -156,20 +102,21 @@ void Application::RunLoop()
         /// Update
         currentState().update(p_window, dt.asSeconds());
 		currentState().lateUpdate(&cam);
+		cam.update();
 
         /// Draw
 		currentState().render(&m_renderer);
 
         /// Render
 		m_context.clear();
-		m_renderer.render(p_window);
+		m_renderer.render(p_window, cam);
 
-		shader.use();
+		/*shader.use();
 
-		float radius = 25.0f;
-		float camX = sin(sec) * radius;
-		float camZ = cos(sec) * radius;
-		view = glm::lookAt(cam.cameraPos, cam.cameraPos + cam.cameraFront, cam.cameraUp);
+		glm::mat4 view = cam.getViewMatrix(cam);
+		glm::mat4 proj = makeProjectionMatrix(60.0f, (sf::Vector2i)(p_window->getSize()));
+		//view = glm::lookAt(cam.cameraPos, cam.cameraPos + cam.cameraFront, cam.cameraUp);
+
 
 		shader.setMat4("view", view);
 		shader.setMat4("proj", proj);
@@ -186,7 +133,7 @@ void Application::RunLoop()
 			shader.setMat4("model", model);
 
 			glDrawArrays(GL_TRIANGLES, 0, 36);
-		}
+		}*/
 
         m_context.update();
 
@@ -202,10 +149,6 @@ void Application::RunLoop()
 		}
 		handleEvents();
     }
-
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
-	glDeleteBuffers(1, &EBO);
 }
 
 void Application::popState()
@@ -225,7 +168,7 @@ void Application::handleEvents()
     while(m_context.getContext()->pollEvent(e))
         {
         switch(e.type)
-			{
+		{
 			case sf::Event::Closed:
 				m_context.close();
 				break;
@@ -245,12 +188,12 @@ void Application::handleEvents()
 
 	                default:
 		                break;
-            }
-            break;
+				}
+				break;
 
-        default:
-            break;
-        }
+			default:
+				break;
+		}
     }
 
 }

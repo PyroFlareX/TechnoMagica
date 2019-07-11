@@ -7,6 +7,7 @@
 #include "../Application.h"
 
 #include "../Util/Input.h"
+#include "../Util/math.h"
 
 class GameState : public Basestate
 {
@@ -26,13 +27,13 @@ protected:
 
 private:
 	bool isColliding(sf::Vector2f playerPos);
-
 	bool isPaused;
 	bool TryPause;
 	
 	Input::Inputs vInput;
-	glm::vec3 momentum = glm::vec3(0.0f);
-	glm::vec3 rotation = glm::vec3(0.0f);
+
+	Player m_player;
+	World m_world;
 };
 
 #endif // GAMESTATE_H

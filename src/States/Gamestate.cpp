@@ -1,7 +1,7 @@
 #include "GameState.h"
 
 #include <iostream>
-#include "../Util/math.h"
+
 
 GameState::GameState()
 {
@@ -19,7 +19,9 @@ bool GameState::input(Application &app)
 	{
 		vInput = Input::getInput();
 
-		if (vInput.right)
+		m_player.getInput(vInput);
+
+		/*if (vInput.right)
 		{
 			momentum.x++;
 		}
@@ -42,6 +44,10 @@ bool GameState::input(Application &app)
 		if (vInput.backwards)
 		{
 			momentum.z++;
+		}*/
+		if (vInput.pause)
+		{
+			tryPause();
 		}
 	}
 	return false;
@@ -52,37 +58,32 @@ void GameState::update(sf::RenderWindow* window, float dt)
 	if (window->hasFocus() && !TryPause)
 	{
 		isPaused = false;
+		//window->setMouseCursorVisible(false);
 	}
 	else
 	{
 		isPaused = true;
 		TryPause = false;
+		//window->setMouseCursorVisible(true);
 	}
 
 	if (!isPaused)
 	{
-		static auto oldMousePos = sf::Mouse::getPosition(*window);
-		sf::Vector2i offset = sf::Mouse::getPosition(*window) - sf::Vector2i(window->getSize().x / 2, window->getSize().y / 2);//oldMousePos;
-		rotation.y -= offset.y;
-		rotation.x += offset.x;
-		//std::cout << rotation.x << " " << rotation.y << "\n";
-		momentum *= dt;
-		rotation *= dt;
+		m_player.update(dt, window);
+
 		/// Collision Detection Here
-		//std::cout << rotation.x << " " << rotation.y << "\n";
+
 	}
-	sf::Mouse::setPosition(sf::Vector2i(window->getSize().x / 2, window->getSize().y / 2), *window);
 }
 
 void GameState::lateUpdate(Camera* cam)
 {
-	cam->move(momentum);
-	cam->rotate(rotation);	
+	cam->follow(m_player);
 }
 
 void GameState::render(Renderer* renderer)
 {
-
+	renderer->drawCube(glm::vec3(0.0f, 0.0f, -5.0f));
 }
 
 void GameState::tryPause()

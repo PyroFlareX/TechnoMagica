@@ -10,7 +10,13 @@
 class Shader
 {
 public:
+	Shader() = default;
 	Shader(const std::string& vertPath, const std::string& fragPath)
+	{
+		load(vertPath, fragPath);
+	}
+
+	void load(const std::string& vertPath, const std::string& fragPath)
 	{
 		std::string vertSource = getFileContents(vertPath);
 		const char* vertPtr = vertSource.c_str();

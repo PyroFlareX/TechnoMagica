@@ -13,7 +13,7 @@ namespace Input
 		bool right;
 		bool backwards;
 		bool forth;
-		sf::Vector2i mousePos;
+		bool pause;
 	};
 
         Inputs getInput();

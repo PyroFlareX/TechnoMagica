@@ -3,7 +3,7 @@
 
 Input::Inputs Input::getInput()
 {
-	Input::Inputs input = { false, false, false, false, false, false, sf::Vector2i(0,0)};
+	Input::Inputs input = { false, false, false, false, false, false, false };
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
@@ -29,7 +29,10 @@ Input::Inputs Input::getInput()
 	{
 		input.down = true;
 	}
-	input.mousePos = sf::Mouse::getPosition();
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+	{
+		input.pause = true;
+	}
 	
 	return input;
 }

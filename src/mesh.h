@@ -1,8 +1,21 @@
 #pragma once
 
-/*struct Mesh
+#include <vector>
+
+struct Mesh
 {
-	float vertices[];
-	int indicies[];
-	float texCoords[];
-};*/
+	std::vector<float> vertices;
+	std::vector<unsigned int> indicies;
+	std::vector<float> texCoords;
+};
+
+struct renderInfo
+{
+	unsigned int VAO = 0;
+	int indiciesCount = 0;
+	inline void reset()
+	{
+		VAO = 0;
+		indiciesCount = 0;
+	}
+};

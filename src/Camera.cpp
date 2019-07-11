@@ -4,38 +4,22 @@ Camera::Camera(sf::RenderWindow* p_win)
 {
 	p_window = p_win;
 	lerp = 2.5f;
+
+	proj = makeProjectionMatrix(60.0f, (sf::Vector2i)(p_window->getSize()));
+
+	pos = glm::vec3(0.0f, 0.0f, 3.0f);
+	rot = glm::vec3(0.0f);
 }
 
-
-void Camera::move(glm::vec3& movement)
+void Camera::follow(Entity& entity)
 {
-	float y = cameraPos.y;
-	cameraPos -= movement.z * lerp * cameraFront;
-	cameraPos += movement.x * lerp * glm::normalize(glm::cross(cameraFront, cameraUp));
-	cameraPos.y = y;
-	cameraPos += movement.y * lerp * cameraUp;
-
-	movement = glm::vec3(0.0f);
+	p_entity = &entity;
 }
 
-void Camera::rotate(glm::vec3& rotationOffset)
+void Camera::update()
 {
-	rotationOffset * 1.55f;
-	rot.x += rotationOffset.x;
-	rot.y += rotationOffset.y;
-
-	//Rotation Clamping
-	if (rot.y > 89.0f) { rot.y = 89.0f; }
-	if (rot.y < -89.0f) { rot.y = -89.0f; }
-
-	glm::vec3 front;
-	front.x = cos(glm::radians(rot.y)) * cos(glm::radians(rot.x));
-	front.y = sin(glm::radians(rot.y));
-	front.z = cos(glm::radians(rot.y)) * sin(glm::radians(rot.x));
-
-	rotationOffset = glm::vec3(0.0f);
-
-	cameraFront = glm::normalize(front);
+	pos = p_entity->pos;
+	rot = p_entity->rot;
 }
 
 Camera::~Camera()

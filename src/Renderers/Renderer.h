@@ -1,7 +1,10 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include <SFML/Graphics.hpp>
+#include "../Camera.h"
+#include "CubeRenderer.h"
+#include "../mesh.h"
+
 #include <vector>
 
 class Renderer
@@ -9,14 +12,15 @@ class Renderer
     public:
         Renderer();
 
-		void addDraw(sf::Drawable& drawable);
-		void render(sf::RenderWindow* window);
+		void drawSFML(sf::Drawable& drawable);
+		void drawCube(glm::vec3 pos);
+		void render(sf::RenderWindow* window, Camera& cam);
 
         ~Renderer();
     protected:
 
     private:
-		std::vector<sf::Drawable*> m_queue;
+		CubeRenderer m_cubeRenderer;
 };
 
 #endif // RENDERER_H

@@ -134,10 +134,12 @@
     <ClCompile Include="src\glad\glad.c" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\Renderers\CubeRenderer.cpp" />
     <ClCompile Include="src\renderers\Renderer.cpp" />
     <ClCompile Include="src\states\Gamestate.cpp" />
     <ClCompile Include="src\util\FileUtil.cpp" />
     <ClCompile Include="src\util\Input.cpp" />
+    <ClCompile Include="src\Util\math.cpp" />
     <ClCompile Include="src\world\World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -148,8 +150,10 @@
     <ClInclude Include="src\glad\glad\glad.h" />
     <ClInclude Include="src\glad\KHR\khrplatform.h" />
     <ClInclude Include="src\mesh.h" />
+    <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\nlohmann\json.hpp" />
     <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\Renderers\CubeRenderer.h" />
     <ClInclude Include="src\renderers\Renderer.h" />
     <ClInclude Include="src\Shaders\Shader.h" />
     <ClInclude Include="src\states\Basestate.h" />

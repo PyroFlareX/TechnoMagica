@@ -12,5 +12,7 @@ int main()
     Application app;
     app.RunLoop();
 
+	system("pause");
+
     return 0;
 }
