@@ -13,8 +13,9 @@ inline sf::Vector2f lerp(sf::Vector2f current, sf::Vector2f target, float gradie
 	return sf::Vector2f((target - current) * gradient + current);
 }
 
-glm::mat4 makeViewMatrix(const Camera& camera);
+const glm::mat4 makeViewMatrix(const Camera& camera);
 
-glm::mat4 makeModelMatrix(const Entity& entity);
+const glm::mat4 makeModelMatrix(const Entity& entity);
 
-glm::mat4 makeProjectionMatrix(float fov, sf::Vector2i winSize);
+//constexpr glm::mat4 makeProjectionMatrix(const float fov);
+const glm::mat4 makeProjectionMatrix(float fov, sf::Vector2i winSize);

@@ -61,10 +61,7 @@ void Player::update(float dt, sf::RenderWindow* window)
 	//velocity.y -= 0.1f;
 
 	pos += velocity * dt;
-	velocity *= 0.0f;
-
-	std::cout << "Pos " << pos.x << " " << pos.y << " " << pos.z << "\n";
-	std::cout << "Rot " << rot.x << " " << rot.y << " " << rot.z << "\n";
+	velocity = glm::vec3(0.0f);
 
 
 	auto cx = static_cast<int>(window->getSize().x / 2);

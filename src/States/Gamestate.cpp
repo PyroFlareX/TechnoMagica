@@ -13,7 +13,7 @@ GameState::~GameState()
 
 }
 
-bool GameState::input(Application &app)
+bool GameState::input(Application& app)
 {
 	if (!isPaused)
 	{
@@ -21,30 +21,7 @@ bool GameState::input(Application &app)
 
 		m_player.getInput(vInput);
 
-		/*if (vInput.right)
-		{
-			momentum.x++;
-		}
-		if (vInput.left)
-		{
-			momentum.x--;
-		}
-		if (vInput.up)
-		{
-			momentum.y++;
-		}
-		if (vInput.down)
-		{
-			momentum.y--;
-		}
-		if (vInput.forth)
-		{
-			momentum.z--;
-		}
-		if (vInput.backwards)
-		{
-			momentum.z++;
-		}*/
+		
 		if (vInput.pause)
 		{
 			tryPause();
@@ -71,8 +48,6 @@ void GameState::update(sf::RenderWindow* window, float dt)
 	{
 		m_player.update(dt, window);
 
-		/// Collision Detection Here
-
 	}
 }
 
@@ -89,12 +64,4 @@ void GameState::render(Renderer* renderer)
 void GameState::tryPause()
 {
 	TryPause = true;
-}
-
-bool GameState::isColliding(sf::Vector2f playerPos)
-{
-	/// Collision Detection Here
-	
-	// @TODO : Add Other Collisions
-	return false;
 }

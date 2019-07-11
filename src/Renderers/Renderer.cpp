@@ -17,12 +17,6 @@ void Renderer::drawCube(glm::vec3 pos)
 
 void Renderer::render(sf::RenderWindow* window, Camera& cam)
 {
-	/*for (const auto& item : m_queue)
-	{
-		window->draw(*item);
-	}
-	m_queue.clear();*/
-
 	m_cubeRenderer.render(cam);
 }
 

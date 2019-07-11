@@ -140,6 +140,8 @@ void CubeRenderer::render(Camera& cam)
 	m_shader.setMat4("view", cam.getViewMatrix(cam));
 	m_shader.setMat4("proj", cam.getProjMatrix());
 
+	glEnable(GL_CULL_FACE);
+
 	for (auto& pos : m_queue)
 	{
 		m_shader.setMat4("model", makeModelMatrix({ pos,{0.0f, 0.0f, 0.0f} }));

@@ -21,6 +21,8 @@ public:
 		addVBO(3, mesh.vertices);
 		addVBO(2, mesh.texCoords);
 		addEBO(mesh.indicies);
+
+		glBindVertexArray(0);
 	}
 
 	void deleteData()
@@ -73,7 +75,6 @@ public:
 	renderInfo& getInfo() { return m_info; }
 
 private:
-	unsigned int VAO;
 	renderInfo m_info;
 	int vboCount = 0;
 	std::vector<unsigned int> bufferObjects;
