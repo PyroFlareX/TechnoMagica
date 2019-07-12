@@ -15,7 +15,7 @@ void Renderer::drawCube(glm::vec3 pos)
 	m_cubeRenderer.addCube(pos);
 }
 
-void Renderer::render(sf::RenderWindow* window, Camera& cam)
+void Renderer::render(Camera& cam)
 {
 	m_cubeRenderer.render(cam);
 }

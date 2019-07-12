@@ -84,9 +84,7 @@ CubeRenderer::CubeRenderer()
 		0.0f, 0.0f,
 		1.0f, 0.0f,
 		1.0f, 1.0f,
-		1.0f, 1.0f,
-		0.0f, 1.0f,
-		0.0f, 0.0f,
+
 
 		0.0f, 0.0f,
 		1.0f, 0.0f,
@@ -148,6 +146,7 @@ void CubeRenderer::render(Camera& cam)
 
 		glDrawElements(GL_TRIANGLES, m_cubeModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
 	}
+	m_queue.clear();
 }
 
 CubeRenderer::~CubeRenderer()

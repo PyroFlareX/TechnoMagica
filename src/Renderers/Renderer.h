@@ -14,7 +14,7 @@ class Renderer
 
 		void drawSFML(sf::Drawable& drawable);
 		void drawCube(glm::vec3 pos);
-		void render(sf::RenderWindow* window, Camera& cam);
+		void render(Camera& cam);
 
         ~Renderer();
     protected:

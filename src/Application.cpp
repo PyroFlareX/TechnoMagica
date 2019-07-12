@@ -45,7 +45,7 @@ void Application::RunLoop()
 
         /// Render
 		m_context.clear();
-		m_renderer.render(p_window, cam);
+		m_renderer.render(cam);
 
 		
 
