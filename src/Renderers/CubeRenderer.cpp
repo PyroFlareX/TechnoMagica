@@ -84,49 +84,50 @@ CubeRenderer::CubeRenderer()
 		0.0f, 0.0f,
 		1.0f, 0.0f,
 		1.0f, 1.0f,
+		0.0f, 1.0f,
 
-
-		0.0f, 0.0f,
 		1.0f, 0.0f,
-		1.0f, 1.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
 		0.0f, 0.0f,
 
+		0.0f, 0.0f,
 		1.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
+
+		0.0f, 1.0f,
+		0.0f, 0.0f,
+		1.0f, 0.0f,
+		1.0f, 1.0f,
+
+		1.0f, 1.0f,
 		0.0f, 1.0f,
 		0.0f, 0.0f,
 		1.0f, 0.0f,
 
 		1.0f, 0.0f,
-		1.0f, 1.0f,
-		0.0f, 1.0f,
-		0.0f, 1.0f,
 		0.0f, 0.0f,
-		1.0f, 0.0f,
-
 		0.0f, 1.0f,
 		1.0f, 1.0f,
-		1.0f, 0.0f,
-		1.0f, 0.0f,
-		0.0f, 0.0f,
-		0.0f, 1.0f,
 
-		0.0f, 1.0f,
-		1.0f, 0.0f,
 		1.0f, 0.0f,
 		0.0f, 0.0f,
-		0.0f, 1.0f
+		0.0f, 1.0f,
+		1.0f, 1.0f,
+
+		1.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		0.0f, 0.0f
 	};
 
 	m_cubeModel.addData({ vertexCoords, indices, texCoords});
 }
 
-void CubeRenderer::addCube(glm::vec3 pos)
+void CubeRenderer::addCube(Entity& entity)
 {
-	m_queue.push_back(pos);
+	m_queue.push_back(entity);
 }
 
 void CubeRenderer::render(Camera& cam)
@@ -140,9 +141,9 @@ void CubeRenderer::render(Camera& cam)
 
 	glEnable(GL_CULL_FACE);
 
-	for (auto& pos : m_queue)
+	for (auto& entity : m_queue)
 	{
-		m_shader.setMat4("model", makeModelMatrix({ pos,{0.0f, 0.0f, 0.0f} }));
+		m_shader.setMat4("model", makeModelMatrix(entity));
 
 		glDrawElements(GL_TRIANGLES, m_cubeModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
 	}

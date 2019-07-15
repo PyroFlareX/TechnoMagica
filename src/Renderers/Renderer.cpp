@@ -10,9 +10,9 @@ void Renderer::drawSFML(sf::Drawable& drawable)
 	//m_queue.push_back(&drawable);
 }
 
-void Renderer::drawCube(glm::vec3 pos)
+void Renderer::drawCube(Entity& entity)
 {
-	m_cubeRenderer.addCube(pos);
+	m_cubeRenderer.addCube(entity);
 }
 
 void Renderer::render(Camera& cam)

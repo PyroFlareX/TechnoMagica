@@ -9,12 +9,12 @@ class CubeRenderer
 public:
 	CubeRenderer();
 
-	void addCube(glm::vec3 pos);
+	void addCube(Entity& entity);
 	void render(Camera& cam);
 
 	~CubeRenderer();
 private:
-	std::vector<glm::vec3> m_queue;
+	std::vector<Entity> m_queue;
 	Shader m_shader;
 	Model m_cubeModel;
 	sf::Texture tex;

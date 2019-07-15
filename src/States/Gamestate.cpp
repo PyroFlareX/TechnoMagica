@@ -72,9 +72,11 @@ void GameState::render(Renderer* renderer)
 	};
 	for (int i = 0; i < 10; ++i)
 	{
-		renderer->drawCube(cubePositions[i]);
+		Entity entity;
+		entity.pos = cubePositions[i];
+		renderer->drawCube(entity);
 	}
-	renderer->drawCube(glm::vec3(0.0f, 0.0f, -5.0f));
+	//renderer->drawCube(glm::vec3(0.0f, 0.0f, -5.0f));
 }
 
 void GameState::tryPause()

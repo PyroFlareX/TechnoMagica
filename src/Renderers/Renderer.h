@@ -13,7 +13,7 @@ class Renderer
         Renderer();
 
 		void drawSFML(sf::Drawable& drawable);
-		void drawCube(glm::vec3 pos);
+		void drawCube(Entity& entity);
 		void render(Camera& cam);
 
         ~Renderer();
