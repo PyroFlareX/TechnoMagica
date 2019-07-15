@@ -10,7 +10,7 @@ Camera::Camera(sf::RenderWindow* p_win)
 	pos = glm::vec3(0.0f, 0.0f, 3.0f);
 	rot = glm::vec3(0.0f);
 
-	p_window->setFramerateLimit(60);
+	//p_window->setFramerateLimit(60);
 }
 
 void Camera::follow(Entity& entity)

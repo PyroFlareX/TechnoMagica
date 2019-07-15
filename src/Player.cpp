@@ -54,8 +54,8 @@ void Player::update(float dt, sf::RenderWindow* window)
 	static auto lastMousePosition = sf::Mouse::getPosition(*window);
 	auto offset = sf::Mouse::getPosition() - lastMousePosition;
 
-	rot.x += (float)offset.y * dt;
-	rot.y += (float)offset.x * dt;
+	rot.x += (float)offset.y * 0.05f;
+	rot.y += (float)offset.x * 0.05f;
 
 
 	//velocity.y -= 0.1f;
