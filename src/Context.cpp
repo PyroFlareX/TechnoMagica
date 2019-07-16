@@ -52,6 +52,7 @@ void Context::initAPI()
 	gladLoadGL();
 	glViewport(0, 0, WIDTH, HEIGHT);
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
 }
 
 bool Context::isOpen()
