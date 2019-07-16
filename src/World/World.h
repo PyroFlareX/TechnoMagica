@@ -10,6 +10,8 @@ class World
     public:
         World();
 
+		void update();
+
         ~World();
     protected:
 

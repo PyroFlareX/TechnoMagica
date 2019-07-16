@@ -5,17 +5,22 @@ CubeRenderer::CubeRenderer()
 {
 	m_shader.load("res/Shaders/vert.glsl", "res/Shaders/frag.glsl");
 
-	tex.loadFromFile("res/container.jpg");
-	tex.bind(&tex);
+	img.loadFromFile("res/Textures/Blocks.png");
+	//tex.i
+	tex.loadFromImage(img);
+	tex.bind(&tex, sf::Texture::CoordinateType::Pixels);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	tex.generateMipmap();
+	//These are commented out because of GL_LINEAR making textures blurry
+
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glGenerateMipmap(GL_TEXTURE_2D);
+
 
 	tex.bind(NULL);
 
@@ -81,45 +86,41 @@ CubeRenderer::CubeRenderer()
 
 	std::vector<float> texCoords
 	{
-		0.0f, 0.0f,
-		1.0f, 0.0f,
-		1.0f, 1.0f,
-		0.0f, 1.0f,
+		//Back
+		0.125f, 0.0625f,	//TR
+		0.0625f, 0.0625f,	//TL
+		0.0625f, 0.0f,		//BL
+		0.125f, 0.0f,		//BR
 
-		1.0f, 0.0f,
-		1.0f, 1.0f,
-		0.0f, 1.0f,
-		0.0f, 0.0f,
+		//Front
+		0.125f, 0.0625f,	//TR
+		0.0625f, 0.0625f,	//TL
+		0.0625f, 0.0f,		//BL
+		0.125f, 0.0f,		//BR
 
-		0.0f, 0.0f,
-		1.0f, 0.0f,
-		1.0f, 1.0f,
-		0.0f, 1.0f,
+		//Right
+		0.125f, 0.0625f,	//TR
+		0.0625f, 0.0625f,	//TL
+		0.0625f, 0.0f,		//BL
+		0.125f, 0.0f,		//BR
 
-		0.0f, 1.0f,
-		0.0f, 0.0f,
-		1.0f, 0.0f,
-		1.0f, 1.0f,
+		//Left
+		0.125f, 0.0625f,	//TR
+		0.0625f, 0.0625f,	//TL
+		0.0625f, 0.0f,		//BL
+		0.125f, 0.0f,		//BR
+		
+		//Top
+		0.1875f, 0.0f,
+		0.25f, 0.0f,
+		0.25f, 0.0625f,
+		0.1875f, 0.0625f,
 
-		1.0f, 1.0f,
-		0.0f, 1.0f,
+		//Bottom
+		0.0625f, 0.0f,
 		0.0f, 0.0f,
-		1.0f, 0.0f,
-
-		1.0f, 0.0f,
-		0.0f, 0.0f,
-		0.0f, 1.0f,
-		1.0f, 1.0f,
-
-		1.0f, 0.0f,
-		0.0f, 0.0f,
-		0.0f, 1.0f,
-		1.0f, 1.0f,
-
-		1.0f, 0.0f,
-		1.0f, 1.0f,
-		0.0f, 1.0f,
-		0.0f, 0.0f
+		0.0f, 0.0625f,
+		0.0625f, 0.0625f
 	};
 
 	m_cubeModel.addData({ vertexCoords, indices, texCoords});
@@ -134,7 +135,7 @@ void CubeRenderer::render(Camera& cam)
 {
 	m_shader.use();
 	m_cubeModel.bindVAO();
-	sf::Texture::bind(&tex);
+	sf::Texture::bind(&tex, sf::Texture::CoordinateType::Pixels);
 
 	m_shader.setMat4("view", cam.getViewMatrix(cam));
 	m_shader.setMat4("proj", cam.getProjMatrix());
