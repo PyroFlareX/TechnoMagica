@@ -19,9 +19,9 @@ const glm::mat4 makeModelMatrix(const Entity& entity)
 {
 	glm::mat4 matrix = glm::mat4(1.0f);
 
-	matrix = glm::rotate(matrix, glm::radians(entity.rot.x), { 1, 0, 0 });
-	matrix = glm::rotate(matrix, glm::radians(entity.rot.y), { 0, 1, 0 });
-	matrix = glm::rotate(matrix, glm::radians(entity.rot.z), { 0, 0, 1 });
+	matrix = glm::rotate(matrix, glm::radians(entity.rot.x), entity.pos/*{ 1, 0, 0 }*/);
+	matrix = glm::rotate(matrix, glm::radians(entity.rot.y), entity.pos/*{ 0, 1, 0 }*/);
+	matrix = glm::rotate(matrix, glm::radians(entity.rot.z), entity.pos/*{ 0, 0, 1 }*/);
 
 	matrix = glm::translate(matrix, entity.pos);
 

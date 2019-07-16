@@ -74,6 +74,7 @@ void GameState::render(Renderer* renderer)
 	{
 		Entity entity;
 		entity.pos = cubePositions[i];
+		//entity.rot.x = i * 20.0f;
 		renderer->drawCube(entity);
 	}
 
