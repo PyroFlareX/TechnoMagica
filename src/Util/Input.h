@@ -14,6 +14,7 @@ namespace Input
 		bool backwards;
 		bool forth;
 		bool pause;
+		bool accel;
 	};
 
         Inputs getInput();

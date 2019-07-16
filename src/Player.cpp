@@ -11,6 +11,12 @@ Player::Player()
 void Player::getInput(Input::Inputs vInput)
 {
 	glm::vec3 change = glm::vec3(0.0f);
+	float speed = 1.0f;
+
+	if (vInput.accel)
+	{
+		speed *= 3.0f;
+	}
 	if (vInput.right)
 	{
 		change.x += glm::cos(glm::radians(rot.y));
@@ -32,14 +38,15 @@ void Player::getInput(Input::Inputs vInput)
 	}
 	if (vInput.forth)
 	{
-		change.x += -glm::cos(glm::radians(rot.y + 90));
-		change.z += -glm::sin(glm::radians(rot.y + 90));
+		change.x += -glm::cos(glm::radians(rot.y + 90)) * speed;
+		change.z += -glm::sin(glm::radians(rot.y + 90)) * speed;
 	}
 	if (vInput.backwards)
 	{
 		change.x += glm::cos(glm::radians(rot.y + 90));
 		change.z += glm::sin(glm::radians(rot.y + 90));
 	}
+
 
 	velocity += change;
 }

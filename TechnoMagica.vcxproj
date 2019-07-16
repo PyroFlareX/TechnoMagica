@@ -136,6 +136,7 @@
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Renderers\CubeRenderer.cpp" />
     <ClCompile Include="src\renderers\Renderer.cpp" />
+    <ClCompile Include="src\Renderers\SFMLRenderer.cpp" />
     <ClCompile Include="src\states\Gamestate.cpp" />
     <ClCompile Include="src\util\FileUtil.cpp" />
     <ClCompile Include="src\util\Input.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Renderers\CubeRenderer.h" />
     <ClInclude Include="src\renderers\Renderer.h" />
+    <ClInclude Include="src\Renderers\SFMLRenderer.h" />
     <ClInclude Include="src\Shaders\Shader.h" />
     <ClInclude Include="src\states\Basestate.h" />
     <ClInclude Include="src\states\Gamestate.h" />

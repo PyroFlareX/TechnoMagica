@@ -3,7 +3,7 @@
 
 Input::Inputs Input::getInput()
 {
-	Input::Inputs input = { false, false, false, false, false, false, false };
+	Input::Inputs input = { false, false, false, false, false, false, false, false };
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
@@ -33,6 +33,8 @@ Input::Inputs Input::getInput()
 	{
 		input.pause = true;
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
+	{ input.accel = true; }
 	
 	return input;
 }

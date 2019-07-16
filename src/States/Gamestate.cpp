@@ -76,6 +76,13 @@ void GameState::render(Renderer* renderer)
 		entity.pos = cubePositions[i];
 		renderer->drawCube(entity);
 	}
+
+	/*sf::RectangleShape rect;
+	rect.setOutlineColor(sf::Color::White);
+	rect.setSize(sf::Vector2f(50, 50));
+	rect.setPosition(sf::Vector2f(400, 550));
+	renderer->drawSFML(rect);*/
+
 	//renderer->drawCube(glm::vec3(0.0f, 0.0f, -5.0f));
 }
 
