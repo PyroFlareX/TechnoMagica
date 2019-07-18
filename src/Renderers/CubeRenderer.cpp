@@ -8,7 +8,7 @@ CubeRenderer::CubeRenderer()
 	img.loadFromFile("res/Textures/Blocks.png");
 	//tex.i
 	tex.loadFromImage(img);
-	tex.bind(&tex, sf::Texture::CoordinateType::Pixels);
+	tex.bind(&tex);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
@@ -135,7 +135,7 @@ void CubeRenderer::render(Camera& cam)
 {
 	m_shader.use();
 	m_cubeModel.bindVAO();
-	sf::Texture::bind(&tex, sf::Texture::CoordinateType::Pixels);
+	sf::Texture::bind(&tex);
 
 	m_shader.setMat4("view", cam.getViewMatrix(cam));
 	m_shader.setMat4("proj", cam.getProjMatrix());

@@ -15,10 +15,16 @@ void Renderer::drawCube(Entity& entity)
 	m_cubeRenderer.addCube(entity);
 }
 
+void Renderer::doCompute()
+{
+//	m_computeRenderer.
+}
+
 void Renderer::render(Camera& cam, sf::RenderWindow* window)
 {
 	m_cubeRenderer.render(cam);
 	m_SFMLRenderer.render(window);
+//	m_computerRenderer.render();
 }
 
 Renderer::~Renderer()

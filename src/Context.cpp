@@ -5,8 +5,8 @@
 Context::Context()
 {
     sf::ContextSettings settings;
-	settings.majorVersion = 3;
-	settings.minorVersion = 3;
+	settings.majorVersion = 4;
+	settings.minorVersion = 5;
 	settings.depthBits = 24;
     context.create(sf::VideoMode(WIDTH, HEIGHT), "TechnoMagica", sf::Style::Default, settings);
     //context.setFramerateLimit(60);

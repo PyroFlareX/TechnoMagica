@@ -134,6 +134,7 @@
     <ClCompile Include="src\glad\glad.c" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\Renderers\ComputeRenderer.cpp" />
     <ClCompile Include="src\Renderers\CubeRenderer.cpp" />
     <ClCompile Include="src\renderers\Renderer.cpp" />
     <ClCompile Include="src\Renderers\SFMLRenderer.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\nlohmann\json.hpp" />
     <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\Renderers\ComputeRenderer.h" />
     <ClInclude Include="src\Renderers\CubeRenderer.h" />
     <ClInclude Include="src\renderers\Renderer.h" />
     <ClInclude Include="src\Renderers\SFMLRenderer.h" />
@@ -167,9 +169,11 @@
     <ClInclude Include="src\util\Random.h" />
     <ClInclude Include="src\Util\ResourceManager.h" />
     <ClInclude Include="src\World\Block\BlockID.h" />
+    <ClInclude Include="src\World\Chunk\Chunk.h" />
     <ClInclude Include="src\world\World.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\Shaders\compute.glsl" />
     <None Include="res\Shaders\frag.glsl" />
     <None Include="res\Shaders\vert.glsl" />
   </ItemGroup>

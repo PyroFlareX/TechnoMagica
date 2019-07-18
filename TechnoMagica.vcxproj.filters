@@ -60,6 +60,9 @@
     <ClCompile Include="src\Util\ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Renderers\ComputeRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h">
@@ -131,12 +134,21 @@
     <ClInclude Include="src\Util\ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Renderers\ComputeRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\Chunk\Chunk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Shaders\frag.glsl">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="res\Shaders\vert.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\Shaders\compute.glsl">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

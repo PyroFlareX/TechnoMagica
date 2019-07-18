@@ -48,7 +48,6 @@ void Application::RunLoop()
 		m_renderer.render(cam, p_window);
 
 		
-
         m_context.update();
 
         /// Handle Window Events

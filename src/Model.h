@@ -70,6 +70,25 @@ public:
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * indicies.size(), indicies.data(), GL_STATIC_DRAW);	//Store Indicies
 	}
 
+	//Unnecessary Currently
+	/*void addSSBO(const std::vector<int>& data)
+	{
+		unsigned int SSBO;
+		glGenBuffers(1, &SSBO);
+		glBindBuffer(GL_SHADER_STORAGE_BUFFER, SSBO);
+		glBufferData(GL_SHADER_STORAGE_BUFFER, sizeof(int) * data.size(), data.data(), /*?*//*);
+		glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 3, SSBO);
+		bufferObjects.push_back(SSBO);
+	}
+
+	void addBuffer(GLenum type, const std::vector<int>& data)
+	{
+		unsigned int BO;
+		glGenBuffers(1, &BO);
+		glBindBuffer(type, BO);
+		bufferObjects.push_back(BO);
+	}*/
+
 	int getNumIndicies() const { return m_info.indiciesCount; }
 
 	renderInfo& getInfo() { return m_info; }
