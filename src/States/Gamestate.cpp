@@ -35,13 +35,11 @@ void GameState::update(sf::RenderWindow* window, float dt)
 	if (window->hasFocus() && !TryPause)
 	{
 		isPaused = false;
-		//window->setMouseCursorVisible(false);
 	}
 	else
 	{
 		isPaused = true;
 		TryPause = false;
-		//window->setMouseCursorVisible(true);
 	}
 
 	if (!isPaused)
@@ -78,13 +76,6 @@ void GameState::render(Renderer* renderer)
 		renderer->drawCube(entity);
 	}
 
-	/*sf::RectangleShape rect;
-	rect.setOutlineColor(sf::Color::White);
-	rect.setSize(sf::Vector2f(50, 50));
-	rect.setPosition(sf::Vector2f(400, 550));
-	renderer->drawSFML(rect);*/
-
-	//renderer->drawCube(glm::vec3(0.0f, 0.0f, -5.0f));
 }
 
 void GameState::tryPause()

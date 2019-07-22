@@ -3,6 +3,7 @@
 #include "../Model.h"
 #include "../Camera.h"
 #include "../Shaders/Shader.h"
+#include "../Texture/Texture.h"
 
 class CubeRenderer
 {
@@ -18,6 +19,6 @@ private:
 	Shader m_shader;
 	Model m_cubeModel;
 	sf::Image img;
-	sf::Texture tex;
+	Texture tex;
 };
 

@@ -11,7 +11,7 @@ ResourceManager::ResourceManager()
 			filler.setPixel(x, y, sf::Color::Blue);
 		}
 	}
-	addImg(filler, "temp");
+	addImg(filler, "filler");
 }
 
 void ResourceManager::addImg(sf::Image img, const std::string texName)
@@ -29,7 +29,7 @@ void ResourceManager::buildTextureSheet()
 
 	for (auto& image : imgs)
 	{
-		sheet.copy(image.first, x * 16, y);
+		sheet.copy(image.first, x * 16, y, sf::IntRect(0, 0, 16, 16));
 
 		std::array<float, 8> texCoords;
 		texCoords[0] = (float)(offsetXY.x * x);
@@ -52,8 +52,9 @@ void ResourceManager::buildTextureSheet()
 	}
 }
 
-sf::Texture* ResourceManager::getSheet()
+Texture* ResourceManager::getSheet()
 {
+	buildTextureSheet();
 	return &tex;
 }
 

@@ -154,7 +154,6 @@
     <ClInclude Include="src\glad\KHR\khrplatform.h" />
     <ClInclude Include="src\mesh.h" />
     <ClInclude Include="src\Model.h" />
-    <ClInclude Include="src\nlohmann\json.hpp" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Renderers\ComputeRenderer.h" />
     <ClInclude Include="src\Renderers\CubeRenderer.h" />
@@ -163,6 +162,8 @@
     <ClInclude Include="src\Shaders\Shader.h" />
     <ClInclude Include="src\states\Basestate.h" />
     <ClInclude Include="src\states\Gamestate.h" />
+    <ClInclude Include="src\Texture\Texture.h" />
+    <ClInclude Include="src\Texture\TextureAtlas.h" />
     <ClInclude Include="src\util\FileUtil.h" />
     <ClInclude Include="src\util\Input.h" />
     <ClInclude Include="src\util\math.h" />

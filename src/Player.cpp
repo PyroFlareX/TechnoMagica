@@ -29,8 +29,7 @@ void Player::getInput(Input::Inputs vInput)
 	}
 	if (vInput.up)
 	{
-		velocity.y++;
-		//jump();
+		jump();
 	}
 	if (vInput.down)
 	{

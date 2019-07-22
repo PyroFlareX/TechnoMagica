@@ -6,22 +6,8 @@ CubeRenderer::CubeRenderer()
 	m_shader.load("res/Shaders/vert.glsl", "res/Shaders/frag.glsl");
 
 	img.loadFromFile("res/Textures/Blocks.png");
-	//tex.i
+	
 	tex.loadFromImage(img);
-	tex.bind(&tex);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-	//These are commented out because of GL_LINEAR making textures blurry
-
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glGenerateMipmap(GL_TEXTURE_2D);
-
-
 	tex.bind(NULL);
 
 	std::vector<float> vertexCoords
@@ -135,7 +121,7 @@ void CubeRenderer::render(Camera& cam)
 {
 	m_shader.use();
 	m_cubeModel.bindVAO();
-	sf::Texture::bind(&tex);
+	Texture::bind(&tex);
 
 	m_shader.setMat4("view", cam.getViewMatrix(cam));
 	m_shader.setMat4("proj", cam.getProjMatrix());
