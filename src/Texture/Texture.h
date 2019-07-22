@@ -9,13 +9,14 @@ public:
 	Texture()
 	{
 		glGenTextures(1, &ID);
-		glActiveTexture(GL_TEXTURE0);
+		//glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, ID);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
 	void loadFromImage(const sf::Image i)
 	{
+		bind();
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, i.getSize().x, i.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, i.getPixelsPtr());
 
 		glGenerateMipmap(GL_TEXTURE_2D);
@@ -27,19 +28,16 @@ public:
 	}
 
 
-	static const void bind(Texture* tex)
+	const void bind()
 	{
-		glBindTexture(GL_TEXTURE_2D, tex->getHandle);
-	}
-	const unsigned int getHandle() const
-	{
-		return ID;
+		glBindTexture(GL_TEXTURE_2D, ID);
 	}
 
 	~Texture()
 	{
 		glDeleteTextures(1, &ID);
 	}
-private:
+
 	unsigned int ID = 0;
+private:
 };

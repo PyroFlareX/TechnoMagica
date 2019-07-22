@@ -32,9 +32,3 @@ const char* getFileContentsCStr(const std::string& filePath)
     return stream.str().c_str();
 }
 
-nlohmann::json getJsonFile(const std::string& filePath)
-{
-	nlohmann::json rjson;
-	rjson = nlohmann::json::parse(getFileContents(filePath));
-	return rjson;
-}

@@ -16,30 +16,30 @@ ResourceManager::ResourceManager()
 
 void ResourceManager::addImg(sf::Image img, const std::string texName)
 {
+	img.flipVertically();
 	imgs.push_back({ img, texName });
 }
 
 void ResourceManager::buildTextureSheet()
 {
 	unsigned int x = 0, y = 0;
-	sf::Image sheet;
 	sheet.create(256, 16 * ((imgs.size() / 16) + 1));
 
-	sf::Vector2f offsetXY = sf::Vector2f(0.125f, sheet.getSize().y / 16.0f);
+	sf::Vector2f offsetXY = sf::Vector2f(0.0625f, sheet.getSize().y / 16.0f);
 
 	for (auto& image : imgs)
 	{
-		sheet.copy(image.first, x * 16, y, sf::IntRect(0, 0, 16, 16));
+		sheet.copy(image.first, x * 16, y);
 
 		std::array<float, 8> texCoords;
 		texCoords[0] = (float)(offsetXY.x * x);
-		texCoords[1] = (float)(offsetXY.y * y);
+		texCoords[1] = (float)(offsetXY.y * y);	//1
 		texCoords[2] = (float)(offsetXY.x + offsetXY.x * x);
-		texCoords[3] = (float)(offsetXY.y * y);
-		texCoords[4] = (float)(offsetXY.x + offsetXY.x * x);	
-		texCoords[5] = (float)(offsetXY.y + offsetXY.y * y);
+		texCoords[3] = (float)(offsetXY.y * y);	//2
+		texCoords[4] = (float)(offsetXY.x + offsetXY.x * x);
+		texCoords[5] = (float)(offsetXY.y + offsetXY.y * y);	//3
 		texCoords[6] = (float)(offsetXY.x * x);
-		texCoords[7] = (float)(offsetXY.y + offsetXY.y * y);
+		texCoords[7] = (float)(offsetXY.y + offsetXY.y * y);	//4
 
 		m_blockTexCoordsMap.insert({ image.second, texCoords });
 
@@ -52,10 +52,10 @@ void ResourceManager::buildTextureSheet()
 	}
 }
 
-Texture* ResourceManager::getSheet()
+sf::Image& ResourceManager::getSheet()
 {
 	buildTextureSheet();
-	return &tex;
+	return sheet;
 }
 
 std::array<float, 8> ResourceManager::getTexCoords(const std::string texName)
