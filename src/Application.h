@@ -27,11 +27,16 @@ public:
 
     void popState();
     void handleEvents();
+	Camera& getCam() 
+	{
+		return m_camera;
+	}
 protected:
 
 private:
     Basestate& currentState();
     Context m_context;
+	Camera m_camera;
     std::vector<std::unique_ptr<Basestate>> m_states;
 	Renderer m_renderer;
 };

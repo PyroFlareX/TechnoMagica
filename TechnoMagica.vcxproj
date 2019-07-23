@@ -134,6 +134,7 @@
     <ClCompile Include="src\glad\glad.c" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\Renderers\ChunkRenderer.cpp" />
     <ClCompile Include="src\Renderers\ComputeRenderer.cpp" />
     <ClCompile Include="src\Renderers\CubeRenderer.cpp" />
     <ClCompile Include="src\renderers\Renderer.cpp" />
@@ -143,6 +144,10 @@
     <ClCompile Include="src\util\Input.cpp" />
     <ClCompile Include="src\Util\math.cpp" />
     <ClCompile Include="src\Util\ResourceManager.cpp" />
+    <ClCompile Include="src\World\Block\Block.cpp" />
+    <ClCompile Include="src\World\Chunk\Chunk.cpp" />
+    <ClCompile Include="src\World\Chunk\ChunkManager.cpp" />
+    <ClCompile Include="src\World\Chunk\ChunkMesh.cpp" />
     <ClCompile Include="src\world\World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +160,7 @@
     <ClInclude Include="src\mesh.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\Renderers\ChunkRenderer.h" />
     <ClInclude Include="src\Renderers\ComputeRenderer.h" />
     <ClInclude Include="src\Renderers\CubeRenderer.h" />
     <ClInclude Include="src\renderers\Renderer.h" />
@@ -169,8 +175,11 @@
     <ClInclude Include="src\util\math.h" />
     <ClInclude Include="src\util\Random.h" />
     <ClInclude Include="src\Util\ResourceManager.h" />
+    <ClInclude Include="src\World\Block\Block.h" />
     <ClInclude Include="src\World\Block\BlockID.h" />
     <ClInclude Include="src\World\Chunk\Chunk.h" />
+    <ClInclude Include="src\World\Chunk\ChunkManager.h" />
+    <ClInclude Include="src\World\Chunk\ChunkMesh.h" />
     <ClInclude Include="src\world\World.h" />
   </ItemGroup>
   <ItemGroup>

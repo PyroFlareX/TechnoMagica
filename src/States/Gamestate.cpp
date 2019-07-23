@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-GameState::GameState()
+GameState::GameState(Application& app)	: m_world(app.getCam(), m_player),	Basestate(app)
 {
 	TryPause = false;
 }
@@ -13,7 +13,7 @@ GameState::~GameState()
 
 }
 
-bool GameState::input(Application& app)
+bool GameState::input()
 {
 	if (!isPaused)
 	{
@@ -45,7 +45,7 @@ void GameState::update(sf::RenderWindow* window, float dt)
 	if (!isPaused)
 	{
 		m_player.update(dt, window);
-
+		m_world.update();
 	}
 }
 
@@ -76,6 +76,7 @@ void GameState::render(Renderer* renderer)
 		renderer->drawCube(entity);
 	}
 
+	m_world.renderWorld(app.getCam(), *renderer);
 }
 
 void GameState::tryPause()

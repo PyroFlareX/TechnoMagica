@@ -20,6 +20,11 @@ void Renderer::doCompute()
 //	m_computeRenderer.
 }
 
+void Renderer::drawChunk(Entity & entity)
+{
+	m_chunkRenderer.addChunk(entity);
+}
+
 void Renderer::render(Camera& cam, sf::RenderWindow* window)
 {
 	m_cubeRenderer.render(cam);

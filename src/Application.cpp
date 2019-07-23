@@ -4,9 +4,9 @@
 #include "Shaders/Shader.h"
 
 
-Application::Application()
+Application::Application()	:	m_camera(m_context.getContext())
 {
-	pushState(std::make_unique<GameState>());
+	pushState(std::make_unique<GameState>(*this));
 }
 
 void Application::RunLoop()
@@ -18,7 +18,6 @@ void Application::RunLoop()
 	m_context.clear();
 	m_context.update();
     sf::RenderWindow* p_window = m_context.getContext();
-	Camera cam(p_window);
 //===================================================================================
 	
 
@@ -33,19 +32,19 @@ void Application::RunLoop()
 		dt = timer.restart();
         ///Main Loop, do cycle of Input, Update, Draw, Render & Swap Buffers, Handle Events
         ///Input
-		currentState().input(*this);
+		currentState().input();
 		
         /// Update
         currentState().update(p_window, dt.asSeconds());
-		currentState().lateUpdate(&cam);
-		cam.update();
+		currentState().lateUpdate(&m_camera);
+		m_camera.update();
 
         /// Draw
 		currentState().render(&m_renderer);
 
         /// Render
 		m_context.clear();
-		m_renderer.render(cam, p_window);
+		m_renderer.render(m_camera, p_window);
 
 		
         m_context.update();

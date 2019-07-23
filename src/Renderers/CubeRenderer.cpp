@@ -86,43 +86,7 @@ CubeRenderer::CubeRenderer()
 	};
 
 	std::vector<float> texCoords;
-	/*{
-		//Back
-		0.125f, 0.0625f,	//TR
-		0.0625f, 0.0625f,	//TL
-		0.0625f, 0.0f,		//BL
-		0.125f, 0.0f,		//BR
-
-		//Front
-		0.125f, 0.0625f,	//TR
-		0.0625f, 0.0625f,	//TL
-		0.0625f, 0.0f,		//BL
-		0.125f, 0.0f,		//BR
-
-		//Right
-		0.125f, 0.0625f,	//TR
-		0.0625f, 0.0625f,	//TL
-		0.0625f, 0.0f,		//BL
-		0.125f, 0.0f,		//BR
-
-		//Left
-		0.125f, 0.0625f,	//TR
-		0.0625f, 0.0625f,	//TL
-		0.0625f, 0.0f,		//BL
-		0.125f, 0.0f,		//BR
-
-		//Top
-		0.1875f, 0.0f,
-		0.25f, 0.0f,
-		0.25f, 0.0625f,
-		0.1875f, 0.0625f };
-
-		/* //Bottom
-		0.0625f, 0.0f,
-		0.0f, 0.0f,
-		0.0f, 0.0625f,
-		0.0625f, 0.0625f);*/
-	//};
+	
 	for (auto& f : resManager.getTexCoords("grass_side"))
 	{
 		texCoords.push_back(f);
@@ -147,6 +111,8 @@ CubeRenderer::CubeRenderer()
 	{
 		texCoords.push_back(f);
 	}
+
+
 
 	m_cubeModel.addData({ vertexCoords, indices, texCoords});
 }

@@ -12,9 +12,9 @@
 class GameState : public Basestate
 {
 public:
-    GameState();
+    GameState(Application& app);
 
-    bool input(Application& app) override;
+    bool input() override;
     void update(sf::RenderWindow* window, float dt) override;
 	void lateUpdate(Camera* cam) override;
 	void render(Renderer* renderer) override;
@@ -26,7 +26,6 @@ protected:
 
 
 private:
-	bool isColliding(sf::Vector2f playerPos);
 	bool isPaused;
 	bool TryPause;
 	

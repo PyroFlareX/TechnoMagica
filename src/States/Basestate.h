@@ -10,16 +10,16 @@ class Application;
 class Basestate
 {
 public:
-	Basestate() {};
+	Basestate(Application& app)	:	app(app)	{};
 
-    virtual bool input(Application& app) = 0;
+    virtual bool input() = 0;
     virtual void update(sf::RenderWindow* window, float dt) = 0;
 	virtual void lateUpdate(Camera* cam) = 0;
 	virtual void render(Renderer* renderer) = 0;
 
     virtual ~Basestate() = default;
 protected:
-
+	Application& app;
 };
 
 

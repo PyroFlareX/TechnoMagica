@@ -19,3 +19,39 @@ const glm::mat4 makeModelMatrix(const Entity& entity);
 
 //constexpr glm::mat4 makeProjectionMatrix(const float fov);
 const glm::mat4 makeProjectionMatrix(float fov, sf::Vector2i winSize);
+
+namespace std
+{
+	template<>
+	struct hash<sf::Vector3i>
+	{
+		size_t operator()(const sf::Vector3i& vect) const noexcept
+		{
+			std::hash<decltype(vect.x)> hasher;
+
+			auto hash1 = hasher(vect.x);
+			auto hash2 = hasher(vect.y);
+			auto hash3 = hasher(vect.z);
+
+			return std::hash<decltype(vect.x)>{}((hash1 ^ (hash2 << hash3) ^ hash3));
+		}
+	};
+}
+
+namespace std
+{
+	template<>
+	struct hash<glm::vec3>
+	{
+		size_t operator()(const glm::vec3& vect) const noexcept
+		{
+			std::hash<decltype(vect.x)> hasher;
+
+			auto hash1 = hasher(vect.x);
+			auto hash2 = hasher(vect.y);
+			auto hash3 = hasher(vect.z);
+
+			return std::hash<decltype(vect.x)>{}((hash1 ^ (hash2 << hash3) ^ hash3));
+		}
+	};
+}
