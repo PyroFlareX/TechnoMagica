@@ -1,18 +1,19 @@
 #include "ChunkRenderer.h"
-#include "../Texture/TextureAtlas.h"
+//#include "../Texture/TextureAtlas.h"
 
 
 ChunkRenderer::ChunkRenderer()
 {
-	tex.loadFromImage(resManager.getSheet());
+	//tex.loadFromImage(resManager.getSheet());
+	//m_shader.load("res/Shaders/vert.glsl", "res/Shaders/frag.glsl");
 }
 
-void ChunkRenderer::addChunk(ChunkMesh & mesh)
+/*void ChunkRenderer::addChunk(ChunkMesh& mesh)
 {
 	m_queue.push_back(&mesh.getModel().getInfo());
-}
+}*/
 
-void ChunkRenderer::render(Camera & cam)
+void ChunkRenderer::render(Camera& cam)
 {
 	m_shader.use();
 	tex.bind();

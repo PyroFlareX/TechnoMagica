@@ -15,7 +15,7 @@ public:
 	void makeMesh();
 	void deleteMesh();
 
-	void renderChunk(Renderer& render, const Camera& cam);
+	//void renderChunk(Renderer& render, const Camera& cam);
 
 	~Chunk();
 private:

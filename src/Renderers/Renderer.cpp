@@ -20,10 +20,10 @@ void Renderer::doCompute()
 //	m_computeRenderer.
 }
 
-void Renderer::drawChunk(Entity & entity)
+/*void Renderer::drawChunk(ChunkMesh& mesh)
 {
-	m_chunkRenderer.addChunk(entity);
-}
+	m_chunkRenderer.addChunk(mesh);
+}*/
 
 void Renderer::render(Camera& cam, sf::RenderWindow* window)
 {

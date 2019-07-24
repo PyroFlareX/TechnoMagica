@@ -15,10 +15,10 @@ void Chunk::deleteMesh()
 
 }
 
-void Chunk::renderChunk(Renderer & render, const Camera & cam)
+/*void Chunk::renderChunk(Renderer& render, const Camera & cam)
 {
 	//render.drawChunk();
-}
+}*/
 
 Chunk::~Chunk()
 {

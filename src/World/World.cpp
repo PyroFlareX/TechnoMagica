@@ -15,7 +15,7 @@ void World::update()
 
 void World::renderWorld(const Camera& cam, Renderer& renderer)
 {
-	m_chunkManager.getChunk(0, 0, 0).renderChunk(renderer, cam);
+	//m_chunkManager.getChunk(0, 0, 0).renderChunk(renderer, cam);
 }
 
 World::~World()
