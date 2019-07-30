@@ -14,7 +14,7 @@ Chunk::Chunk(World* p_world, int x, int y, int z)	: p_world(p_world), pos(x, y, 
 {
 	for(int i = 0; i < CHUNK_VOLUME; ++i)
 	{
-		m_blocks[i] = Block(BlockId::DIRT);
+		m_blocks[i] = resources::BlockDatabase.getBlock("dirt");
 	}
 }
 

@@ -34,11 +34,39 @@ Block::Block(BlockId id)	:	id(id)
 
 }
 
+Block::Block(BlockId id, const std::string & texName) : id(id)
+{
+	tex.fill(texName);
+}
+
+Block::Block(BlockId id, const std::string & texNameF, const std::string & texNameB,
+			const std::string & texNameL, const std::string & texNameR, const std::string & texNameU, 
+			const std::string & texNameD) : id(id)
+{
+	tex[0] = texNameU;
+	tex[1] = texNameD;
+	tex[2] = texNameF;
+	tex[3] = texNameB;
+	tex[4] = texNameL;
+	tex[5] = texNameR;
+}
+
 std::string Block::getTextureName(Facing dir)
 {
-	/*switch (dir)
+	switch (dir)
 	{
-		case Facing::
-	}*/
-	return std::string("dirt");
+	case Facing::UP:
+		return tex[0];
+	case Facing::DOWN:
+		return tex[1];
+	case Facing::NORTH:
+		return tex[2];
+	case Facing::SOUTH:
+		return tex[3];
+	case Facing::WEST:
+		return tex[4];
+	case Facing::EAST:
+		return tex[5];
+	}
+	return std::string("filler");
 }

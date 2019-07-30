@@ -85,7 +85,12 @@ TextureManager::~TextureManager()
 
 BlockManager::BlockManager()
 {
-
+	Block block(BlockId::DIRT, "dirt");
+	addBlock(block, "dirt");
+	Block block(BlockId::GRASS, "grass");
+	addBlock(block, "grass");
+	Block block(BlockId::STONE, "stone");
+	addBlock(block, "stone");
 }
 
 void BlockManager::addBlock(Block& block, const std::string& blockName)
