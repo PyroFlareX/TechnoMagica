@@ -1,7 +1,7 @@
 #include "Block.h"
-#include <bitset>
+//#include <bitset>
 
-Block::Block(BlockId id)	:	id(id)
+/*Block::Block(BlockId id)	:	id(id)
 {
 
 }
@@ -27,9 +27,18 @@ BlockDataCompressed Block::compress()
 	//globalTemp = intBlock;
 
 	return block;
-}
+}*/
 
-ChunkBlock::ChunkBlock(BlockId id)	:	id(id)
+Block::Block(BlockId id)	:	id(id)
 {
 
+}
+
+std::string Block::getTextureName(Facing dir)
+{
+	/*switch (dir)
+	{
+		case Facing::
+	}*/
+	return std::string("dirt");
 }

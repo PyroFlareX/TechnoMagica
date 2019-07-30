@@ -1,25 +1,36 @@
 #pragma once
 
-#include "../../Entity.h"
-#include <array>
+
 #include "../Block/Block.h"
-#include "../../Renderers/Renderer.h"
+#include "ChunkMesh.h"
+
+class Renderer;
+class World;
 
 constexpr int CHUNK_SIZE = 16;
+constexpr int CHUNK_AREA = CHUNK_SIZE * CHUNK_SIZE;
+constexpr int CHUNK_VOLUME = CHUNK_AREA * CHUNK_SIZE;
 
-class Chunk : public Entity
+class Chunk
 {
 public:
-	Chunk();
+	Chunk() = default;
+	Chunk(World* p_world, int x, int y, int z);
+
+	const Block& getBlock(int x, int y, int z) const;
+	const sf::Vector3i getPos() const;
 
 	void makeMesh();
 	void deleteMesh();
 
-	//void renderChunk(Renderer& render, const Camera& cam);
+	void renderChunk(Renderer& render, const Camera& cam);
 
 	~Chunk();
 private:
-	std::array<ChunkBlock, CHUNK_SIZE * CHUNK_SIZE * CHUNK_SIZE> m_blocks;
+	std::array<Block, CHUNK_VOLUME> m_blocks;
 
 	bool hasMesh = false;
+	ChunkMesh mesh;
+	World* p_world;
+	sf::Vector3i pos;
 };

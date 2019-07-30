@@ -1,22 +1,12 @@
 #include "CubeRenderer.h"
-#include "../Texture/TextureAtlas.h"
 
+#include "../Util/ResourceManager.h"
 
 CubeRenderer::CubeRenderer()
 {
 	sf::Image img;
-	img.loadFromFile("res/Textures/dirt.png");
-	resManager.addImg(img, "dirt");
-	img.loadFromFile("res/Textures/grass_side.png");
-	resManager.addImg(img, "grass_side");
-	img.loadFromFile("res/Textures/grass_top.png");
-	resManager.addImg(img, "grass_top");
-	img.loadFromFile("res/Textures/sand.png");
-	resManager.addImg(img, "sand");
-	img.loadFromFile("res/Textures/stone.png");
-	resManager.addImg(img, "stone");
 
-	img = resManager.getSheet();
+	img = resources::TexManager.getSheet();
 	img.saveToFile("test.png");
 
 	m_shader.load("res/Shaders/vert.glsl", "res/Shaders/frag.glsl");
@@ -87,27 +77,27 @@ CubeRenderer::CubeRenderer()
 
 	std::vector<float> texCoords;
 	
-	for (auto& f : resManager.getTexCoords("grass_side"))
+	for (auto& f : resources::TexManager.getTexCoords("grass_side"))
 	{
 		texCoords.push_back(f);
 	}
-	for (auto& f : resManager.getTexCoords("grass_side"))
+	for (auto& f : resources::TexManager.getTexCoords("grass_side"))
 	{
 		texCoords.push_back(f);
 	}
-	for (auto& f : resManager.getTexCoords("grass_side"))
+	for (auto& f : resources::TexManager.getTexCoords("grass_side"))
 	{
 		texCoords.push_back(f);
 	}
-	for (auto& f : resManager.getTexCoords("grass_side"))
+	for (auto& f : resources::TexManager.getTexCoords("grass_side"))
 	{
 		texCoords.push_back(f);
 	}
-	for (auto& f : resManager.getTexCoords("grass_top"))
+	for (auto& f : resources::TexManager.getTexCoords("grass_top"))
 	{
 		texCoords.push_back(f);
 	}
-	for (auto& f : resManager.getTexCoords("dirt"))
+	for (auto& f : resources::TexManager.getTexCoords("dirt"))
 	{
 		texCoords.push_back(f);
 	}

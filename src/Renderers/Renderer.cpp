@@ -20,16 +20,17 @@ void Renderer::doCompute()
 //	m_computeRenderer.
 }
 
-/*void Renderer::drawChunk(ChunkMesh& mesh)
+void Renderer::drawChunk(ChunkMesh& mesh)
 {
 	m_chunkRenderer.addChunk(mesh);
-}*/
+}
 
 void Renderer::render(Camera& cam, sf::RenderWindow* window)
 {
 	m_cubeRenderer.render(cam);
-	m_SFMLRenderer.render(window);
-//	m_computerRenderer.render();
+	m_chunkRenderer.render(cam);
+//	m_SFMLRenderer.render(window);
+//	m_computeRenderer.render();
 }
 
 Renderer::~Renderer()

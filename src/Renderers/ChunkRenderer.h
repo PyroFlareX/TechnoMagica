@@ -10,7 +10,7 @@ class ChunkRenderer
 public:
 	ChunkRenderer();
 
-//	void addChunk(ChunkMesh& mesh);
+	void addChunk(ChunkMesh& mesh);
 	void render(Camera& cam);
 
 	~ChunkRenderer();

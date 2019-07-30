@@ -1,5 +1,7 @@
 #include "ChunkMesh.h"
 
+#include "Chunk.h"
+
 void ChunkMesh::addFace(const std::array<float, 12>& blockFace, const std::array<float, 8>& texCoords, const sf::Vector3i & chunkPos, const sf::Vector3i & blockPos)
 {
 	++faces;

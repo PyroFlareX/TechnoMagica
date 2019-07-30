@@ -13,6 +13,8 @@ class World
     public:
         World(const Camera& cam, Player& player);
 
+		Block& getBlock(int x, int y, int z);
+
 		void update();
 		void renderWorld(const Camera& cam, Renderer& renderer);
 
@@ -27,7 +29,7 @@ class World
 		std::atomic<bool> isRunning{ true };
 		std::vector<std::thread> loadThreads;
 
-
 };
+constexpr int BOUNDS = 4;
 
 #endif // WORLD_H

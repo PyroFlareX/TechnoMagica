@@ -2,7 +2,7 @@
 
 #include "BlockID.h"
 #include "../../Entity.h"
-
+/*
 struct BlockDataCompressed
 {
 	uint8_t XZ;
@@ -22,21 +22,26 @@ private:
 	glm::vec3 pos = glm::vec3(0.0f, 0.0f, 0.0f);
 };
 
-//uint32_t globalTemp;
+//uint32_t globalTemp;*/
 
-struct ChunkBlock
+class Block
 {
 public:
-	ChunkBlock() = default;
-	ChunkBlock(BlockId id);
+	Block() = default;
+	Block(BlockId id);
 	BlockId id;
 
-	bool operator ==(ChunkBlock other) const
+	bool operator ==(Block other) const
 	{
 		return id == other.id;
 	}
-	bool operator !=(ChunkBlock other) const
+	bool operator !=(Block other) const
 	{
 		return id != other.id;
 	}
+
+	std::string getTextureName(Facing dir);
+private:
+
 };
+

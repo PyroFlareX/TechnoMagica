@@ -105,7 +105,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <OpenMPSupport>true</OpenMPSupport>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -148,6 +148,7 @@
     <ClCompile Include="src\World\Chunk\Chunk.cpp" />
     <ClCompile Include="src\World\Chunk\ChunkManager.cpp" />
     <ClCompile Include="src\World\Chunk\ChunkMesh.cpp" />
+    <ClCompile Include="src\World\Chunk\ChunkMeshBuilder.cpp" />
     <ClCompile Include="src\world\World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -169,7 +170,6 @@
     <ClInclude Include="src\states\Basestate.h" />
     <ClInclude Include="src\states\Gamestate.h" />
     <ClInclude Include="src\Texture\Texture.h" />
-    <ClInclude Include="src\Texture\TextureAtlas.h" />
     <ClInclude Include="src\util\FileUtil.h" />
     <ClInclude Include="src\util\Input.h" />
     <ClInclude Include="src\util\math.h" />
@@ -180,9 +180,12 @@
     <ClInclude Include="src\World\Chunk\Chunk.h" />
     <ClInclude Include="src\World\Chunk\ChunkManager.h" />
     <ClInclude Include="src\World\Chunk\ChunkMesh.h" />
+    <ClInclude Include="src\World\Chunk\ChunkMeshBuilder.h" />
     <ClInclude Include="src\world\World.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\Shaders\ChunkFrag.glsl" />
+    <None Include="res\Shaders\ChunkVert.glsl" />
     <None Include="res\Shaders\compute.glsl" />
     <None Include="res\Shaders\frag.glsl" />
     <None Include="res\Shaders\vert.glsl" />

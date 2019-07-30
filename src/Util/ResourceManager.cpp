@@ -1,6 +1,6 @@
 #include "ResourceManager.h"
 
-ResourceManager::ResourceManager()
+TextureManager::TextureManager()
 {
 	sf::Image filler;
 	filler.create(16, 16, sf::Color::Green);
@@ -12,15 +12,27 @@ ResourceManager::ResourceManager()
 		}
 	}
 	addImg(filler, "filler");
+
+	sf::Image img;
+	img.loadFromFile("res/Textures/dirt.png");
+	addImg(img, "dirt");
+	img.loadFromFile("res/Textures/grass_side.png");
+	addImg(img, "grass_side");
+	img.loadFromFile("res/Textures/grass_top.png");
+	addImg(img, "grass_top");
+	img.loadFromFile("res/Textures/sand.png");
+	addImg(img, "sand");
+	img.loadFromFile("res/Textures/stone.png");
+	addImg(img, "stone");
 }
 
-void ResourceManager::addImg(sf::Image img, const std::string texName)
+void TextureManager::addImg(sf::Image img, const std::string& texName)
 {
 	img.flipVertically();
 	imgs.push_back({ img, texName });
 }
 
-void ResourceManager::buildTextureSheet()
+void TextureManager::buildTextureSheet()
 {
 	unsigned int x = 0, y = 0;
 	sheet.create(256, 16 * ((imgs.size() / 16) + 1));
@@ -52,19 +64,47 @@ void ResourceManager::buildTextureSheet()
 	}
 }
 
-sf::Image& ResourceManager::getSheet()
+sf::Image& TextureManager::getSheet()
 {
 	buildTextureSheet();
 	return sheet;
 }
 
-std::array<float, 8> ResourceManager::getTexCoords(const std::string texName)
+std::array<float, 8> TextureManager::getTexCoords(const std::string& texName)
 {
 	std::unordered_map<std::string, std::array<float, 8>>::const_iterator iter = m_blockTexCoordsMap.find(texName);
 	return iter->second;
 }
 
-ResourceManager::~ResourceManager()
+TextureManager::~TextureManager()
 {
 	imgs.clear();
+}
+
+
+
+BlockManager::BlockManager()
+{
+
+}
+
+void BlockManager::addBlock(Block& block, const std::string& blockName)
+{
+	m_blockMap.insert({ blockName, block });
+}
+
+Block & BlockManager::getBlock(const std::string & blockName)
+{
+	return m_blockMap.find(blockName)->second;
+}
+
+BlockManager::~BlockManager()
+{
+
+}
+
+namespace resources
+{
+	TextureManager TexManager;
+	BlockManager BlockDatabase;
 }

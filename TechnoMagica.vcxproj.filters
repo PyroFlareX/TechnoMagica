@@ -78,6 +78,9 @@
     <ClCompile Include="src\World\Chunk\ChunkMesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\World\Chunk\ChunkMeshBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h">
@@ -155,9 +158,6 @@
     <ClInclude Include="src\Texture\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Texture\TextureAtlas.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\World\Chunk\ChunkManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -170,6 +170,9 @@
     <ClInclude Include="src\World\Chunk\ChunkMesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\World\Chunk\ChunkMeshBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Shaders\frag.glsl">
@@ -179,6 +182,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="res\Shaders\compute.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\Shaders\ChunkFrag.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\Shaders\ChunkVert.glsl">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

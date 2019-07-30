@@ -1,8 +1,10 @@
 #include "ChunkManager.h"
 
-ChunkManager::ChunkManager(World& world)
-{
+#include "../World.h"
 
+ChunkManager::ChunkManager(World& world)	: p_world(&world)
+{
+	
 }
 
 void ChunkManager::makeMesh(int x, int y, int z, const Camera& cam)
@@ -28,7 +30,7 @@ Chunk& ChunkManager::getChunk(int x, int y, int z)
 {
 	if (!chunkExists(x, y, z))
 	{
-		Chunk chunk;
+		Chunk chunk(p_world, x, y, z);
 		chunks.emplace(sf::Vector3i(x, y, z), std::move(chunk));
 	}
 
@@ -42,7 +44,7 @@ ChunkManager::~ChunkManager()
 
 bool ChunkManager::chunkExists(int x, int y, int z)
 {
-	return chunks.find(sf::Vector3i(x, y, z)) != chunks.end();
+	return (chunks.find(sf::Vector3i(x, y, z)) != chunks.end());
 }
 
 bool ChunkManager::chunkLoadedAt(int x, int y, int z)
