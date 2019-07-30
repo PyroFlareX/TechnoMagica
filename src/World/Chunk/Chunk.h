@@ -3,6 +3,7 @@
 
 #include "../Block/Block.h"
 #include "ChunkMesh.h"
+#include "../../Camera.h"
 
 class Renderer;
 class World;

@@ -10,8 +10,7 @@ World::World(const Camera& cam, Player& player)	:	m_chunkManager(*this)
 
 Block& World::getBlock(int x, int y, int z)
 {
-	auto chunk = m_chunkManager.getChunk(x / 16, y / 16, z / 16);
-	auto block = chunk.getBlock(x % 16, y % 16, z % 16);
+	auto block = m_chunkManager.getChunk(x / 16, y / 16, z / 16).getBlock(x % 16, y % 16, z % 16);
 	return block;
 }
 
@@ -24,7 +23,7 @@ void World::renderWorld(const Camera& cam, Renderer& renderer)
 {
 	for (int x = 0; x < BOUNDS; ++x)
 		for (int y = 0; y < BOUNDS; ++y)
-			for (int z = 0; z < 1; ++z)
+			for (int z = 0; z < BOUNDS; ++z)
 			{
 				m_chunkManager.getChunk(x, y, z).renderChunk(renderer, cam);
 			}
@@ -43,7 +42,7 @@ void World::loadChunks(const Camera& cam)
 	//}
 	for (int x = 0; x < BOUNDS; ++x)
 		for (int y = 0; y < BOUNDS; ++y)
-			for (int z = 0; z < 1; ++z)
+			for (int z = 0; z < BOUNDS; ++z)
 			{
 				std::cout << "Chunk: " << x << " " << y << " " << z << "\n";
 				m_chunkManager.loadChunk(x, y, z);

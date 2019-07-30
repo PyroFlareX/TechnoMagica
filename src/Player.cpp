@@ -3,7 +3,7 @@
 
 Player::Player()
 {
-	pos = glm::vec3(0.0f, 76.0f, 1.0f);
+	pos = glm::vec3(0.0f, 32.0f, 1.0f);
 	rot = glm::vec3(0.0f, 0.0f, 0.0f);
 	velocity = glm::vec3(0.0f, 0.0f, 0.0f);
 }
@@ -64,7 +64,7 @@ void Player::update(float dt, sf::RenderWindow* window)
 	rot.y += (float)offset.x * 0.05f;
 
 
-	velocity.y -= 0.7f;
+	//velocity.y -= 0.7f;
 
 	pos += velocity * dt;
 	velocity = glm::vec3(0.0f);

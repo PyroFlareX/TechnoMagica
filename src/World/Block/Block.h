@@ -26,7 +26,7 @@ public:
 
 	std::string getTextureName(Facing dir);
 private:
-	std::array<std::string, 6> tex;
+	//std::array<std::string, 6> tex;
 
 	/*
 	Properties:
